@@ -1,7 +1,8 @@
 import React from "react";
 import { Header, Card, Grid, Image } from "semantic-ui-react"
-import {Link, } from "react-dom"
+import {Link, } from "react-router-dom"
 import axios from "axios";
+import Beach from './images/beach.jpeg'
 
 class Home extends React.Component {
   state = { videos: [] };
@@ -30,7 +31,7 @@ class Home extends React.Component {
             {videos.map(video => (
               <Card key={video.id}>
               <Link to={`/video/${video.id}`}>
-                <Image src="" alt="Boo Hoo" />
+                <Image src={Beach} alt="Boo Hoo" />
                 </Link>
                 <Card.Content>
                   <Card.Header>{video.title}</Card.Header>
@@ -44,8 +45,13 @@ class Home extends React.Component {
       </>
     );
   };
+
   render() {
-    return <>{this.allVideos()}</>;
+    return (
+    <>
+    {this.allVideos()}
+    </>
+    )
   }
 }
 
