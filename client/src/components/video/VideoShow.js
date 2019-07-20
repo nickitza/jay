@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import {Card, Grid } from 'semantic-ui-react'
-// import ResponsiveEmbed from 'react-responsive-embed'
+import ResponsiveEmbed from 'react-responsive-embed'
 
 
 class VideoShow extends React.Component {
@@ -46,7 +46,7 @@ class VideoShow extends React.Component {
         allowFullScreen
         />
        </Grid.Column>
-       
+
       </Grid.Row>
 
      </Grid>
