@@ -1,13 +1,23 @@
 import React from "react";
-import { Header, Card, Grid, Image } from "semantic-ui-react";
+import { Header, Card, Grid, Image } from "semantic-ui-react"
+import {Link, } from "react-dom"
 import axios from "axios";
 
 class Home extends React.Component {
   state = { videos: [] };
 
   componentDidMount() {
-    axios.get("/api/videos").then(res => this.setState({ videos: res.data }));
-  }
+    axios.get("/api/videos")
+    .then(res => {
+      this.setState({ videos: res.data })
+      })
+      .catch(err => {
+        console.log(err.response)
+      })
+    }
+      
+  
+    
   allVideos = () => {
     const { videos } = this.state;
     if (videos.length <= 0) return <h2>No Video Yet...</h2>;
@@ -19,7 +29,9 @@ class Home extends React.Component {
           <Card.Group itemsPerRow={4}>
             {videos.map(video => (
               <Card key={video.id}>
+              <Link to={`/video/${video.id}`}>
                 <Image src="" alt="Boo Hoo" />
+                </Link>
                 <Card.Content>
                   <Card.Header>{video.title}</Card.Header>
                   <Card.Meta>{video.description}</Card.Meta>
