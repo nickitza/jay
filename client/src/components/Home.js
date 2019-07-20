@@ -2,7 +2,7 @@ import React from "react";
 import { Header, Card, Grid, Image, Button } from "semantic-ui-react"
 import {Link, } from "react-router-dom"
 import axios from "axios";
-
+import Beach from './images/beach.jpeg'
 
 class Home extends React.Component {
   state = { videos: [] };
@@ -36,7 +36,9 @@ class Home extends React.Component {
           <Card.Group itemsPerRow={4}>
             {videos.map(video => (
               <Card key={video.id}>
-                <Image src={video.trailer} alt="Boo Hoo" />
+              <Link to={`/video/${video.id}`}>
+                <Image src={Beach} alt="Boo Hoo" />
+                </Link>
                 <Card.Content>
                   <Card.Header>{video.title}</Card.Header>
                   <Card.Meta>{video.description}</Card.Meta>

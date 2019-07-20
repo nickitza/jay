@@ -34,9 +34,9 @@ class VideoShow extends React.Component {
       <div style={{ marginTop: '40px', padding: '20px', border: '1px solid black' }}>
         
           <Card style={{ height: "300px", width: '300px', textAlign: 'center' }}>
-            <h3>{c.name}</h3>
+            <h3>{c.title}</h3>
             <Card.Description>
-              ${c.price}
+              ${c.description}
             </Card.Description>
           
              
@@ -64,7 +64,7 @@ class VideoShow extends React.Component {
         type="text/html" 
         width="900" 
         height="500"
-        src="https://www.youtube.com/embed?listType=playlist&list=PL50JhZpTWVPIbp_XsZ5mZKSbS19wYvOoD&autoplay=0&loop=1&modestbranding=1"
+        src="https://www.youtube.com/embed?listType=playlist&list=PL50JhZpTWVPIbp_XsZ5mZKSbS19wYvOoD&autoplay=1&loop=1&modestbranding=1"
         frameBorder="0"
         />
         </Container>
