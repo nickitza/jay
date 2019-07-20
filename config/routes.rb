@@ -5,4 +5,9 @@ Rails.application.routes.draw do
     resources :videos
   end
 
+  resources :video do 
+    resources :comments
+  end
+
+
 end
