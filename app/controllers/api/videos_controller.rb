@@ -10,7 +10,7 @@ def show
 end
 
 def create
-  video = current_user.videos.new(video_params)
+  video = current_user.videos.new
   video.title = params[:title] ? params[:title] : video.title
   video.description = params[:description] ? params[:description] : video.description
   video.duration = params[:duration] ? params[:duration] : video.duration
@@ -20,8 +20,8 @@ def create
   if file
     begin
       ext = File.extname(file.tempfile)
-      cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
-      post.trailer = cloud_image["secure_url"]
+      cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, resource_type: 'auto', secure: true)
+      video.trailer = cloud_image["secure_url"]
     rescue => e
       render json: { errors: e }, status: 422
     end
@@ -59,8 +59,8 @@ def set_video
   @video = current_user.videos.find(params[:id])
 end
 
-def video_params
-  params.require(:video).permit(:title, :duration, :genre, :description, :trailer, :user_id)
-end
+# def video_params
+#   params.require(:video).permit(:title, :duration, :genre, :description, :trailer, :user_id)
+# end
 
 end

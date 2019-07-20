@@ -37,8 +37,7 @@ class VideoForm extends React.Component {
     data.append('duration', duration )
     data.append('description', description )
     data.append('genre', genre )
-    axios
-      .post("/api/videos", data)
+    axios.post(`/api/videos?title=${title}&description=${description}&duration=${duration}&genre=${genre}`, data)
       .then(res => {
         this.props.history.push("/");
       })
