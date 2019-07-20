@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :videos, dependent: :destroy
+  has_many :comments, :through => :videos
 end
