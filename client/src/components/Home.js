@@ -1,8 +1,40 @@
-import React from 'react';
-import { Header, } from 'semantic-ui-react';
+import React from "react";
+import { Header, Card, Grid, Image } from "semantic-ui-react";
+import axios from "axios";
 
-const Home = () => (
-  <Header as="h3" textAlign="center">Devise Auth App</Header>
-)
+class Home extends React.Component {
+  state = { videos: [] };
+
+  componentDidMount() {
+    axios.get("/api/videos").then(res => this.setState({ videos: res.data }));
+  }
+  allVideos = () => {
+    const { videos } = this.state;
+    if (videos.length <= 0) return <h2>No Video Yet...</h2>;
+    return (
+      <>
+      <Header as='h2'>All Videos</Header>
+      <Grid style={{ marginTop: "25px" }}>
+        <Grid.Column>
+          <Card.Group itemsPerRow={4}>
+            {videos.map(video => (
+              <Card key={video.id}>
+                <Image src="" alt="Boo Hoo" />
+                <Card.Content>
+                  <Card.Header>{video.title}</Card.Header>
+                  <Card.Meta>{video.description}</Card.Meta>
+                </Card.Content>
+              </Card>
+            ))}
+          </Card.Group>
+        </Grid.Column>
+      </Grid>
+      </>
+    );
+  };
+  render() {
+    return <>{this.allVideos()}</>;
+  }
+}
 
 export default Home;
