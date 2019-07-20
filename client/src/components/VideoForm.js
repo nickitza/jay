@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Header, Container, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import ImageUploader from "react-images-upload"
 
 class VideoForm extends React.Component {
   state = {
@@ -9,24 +10,39 @@ class VideoForm extends React.Component {
     duration: "",
     genre: "",
     description: "",
-    trailer: ""
+    trailer: "",
   };
 
-  handleChange = (e, { name, value }) => { 
-    this.setState({ [name]: value } );
+  constructor(props) {
+    super(props);
+    this.onDrop = this.onDrop.bind(this);
+  }
+
+  onDrop(trailer) {
+    this.setState({
+      trailer: trailer[0]
+    });
+  }
+
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value });
   };
 
   handleSubmit = (e) => {
-    e.preventDefault()
-    const {title, duration, genre, description, trailer } = this.state
-    const video = {...this.state}
-    axios.post('/api/videos', video)
+    e.preventDefault();
+    const { title, duration, genre, description, trailer, } = this.state;
+    let data = new FormData()
+    data.append('file', trailer)
+    data.append('title', title )
+    data.append('duration', duration )
+    data.append('description', description )
+    data.append('genre', genre )
+    axios.post(`/api/videos?title=${title}&description=${description}&duration=${duration}&genre=${genre}`, data)
       .then(res => {
-        this.props.history.push('/')
+        this.props.history.push("/");
       })
-      .catch(err => console.log(err))
-
-  }
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -37,6 +53,15 @@ class VideoForm extends React.Component {
               ? "Edit This Video"
               : "Upload New Video"}
           </Header>
+          <ImageUploader
+            withIcon={true}
+            buttonText="Choose image"
+            onChange={this.onDrop}
+            imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+            maxFileSize={5242880}
+            singleImage={true}
+            withPreview={true}
+          />
           <Form.Input
             label="Title"
             placeholder="Title"
@@ -66,7 +91,7 @@ class VideoForm extends React.Component {
             onChange={this.handleChange}
           />
 
-          <Button>
+          <Button color="teal">
             {this.props.match.params.id ? "Update Video" : "Upload"}
           </Button>
           <Link to={{ pathname: "/" }}>
@@ -76,6 +101,21 @@ class VideoForm extends React.Component {
       </Container>
     );
   }
+}
+
+
+const styles = {
+  dropzone: {
+    height: "150px",
+    width: "150px",
+    border: "1px dashed black",
+    borderRadius: "5px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "10px",
+    margin: "0 auto",
+  },
 }
 
 export default VideoForm;
