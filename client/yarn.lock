@@ -7040,6 +7040,19 @@ react-error-overlay@^5.1.4:
   version "5.1.4"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.4.tgz#88dfb88857c18ceb3b9f95076f850d7121776991"
 
+react-flip-move@^3.0.1:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/react-flip-move/-/react-flip-move-3.0.3.tgz#3065b0b9e622ae73953aba725f8feed8e4643667"
+  integrity sha512-gR2jvjUgIXI7ceFWJkr8owX4vKhV0IJoXIf/Dt7gESFe5OKiSz2H6d10mKTW8fN134NDI16J4HgEgq9pKqJd5A==
+
+react-images-upload@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/react-images-upload/-/react-images-upload-1.2.7.tgz#cae9037cdd4db1ae07e7814aa101826af3dd0f83"
+  integrity sha512-0vUOi8Qnfer/GO2gR6c2cNB5nY1sVyjOWFaNvCSJd9pETig24Qy2euheFcYgR5BIcfe9G3XT875cpEhKqbQRnA==
+  dependencies:
+    react "^16.2.0"
+    react-flip-move "^3.0.1"
+
 react-is@^16.6.0, react-is@^16.7.0:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
@@ -7128,7 +7141,7 @@ react-scripts@2.1.8:
   optionalDependencies:
     fsevents "1.2.4"
 
-react@^16.8.6:
+react@^16.2.0, react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   dependencies:
