@@ -2,7 +2,7 @@ import React from "react";
 import { Header, Card, Grid, Image } from "semantic-ui-react"
 import {Link, } from "react-router-dom"
 import axios from "axios";
-import Beach from './images/beach.jpeg'
+
 
 class Home extends React.Component {
   state = { videos: [] };
