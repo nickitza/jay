@@ -31,9 +31,14 @@ class VideoForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { title, duration, genre, description, trailer, } = this.state;
-    const video = { ...this.state };
+    let data = new FormData()
+    data.append('file', trailer)
+    data.append('title', title )
+    data.append('duration', duration )
+    data.append('description', description )
+    data.append('genre', genre )
     axios
-      .post("/api/videos", video)
+      .post("/api/videos", data)
       .then(res => {
         this.props.history.push("/");
       })
