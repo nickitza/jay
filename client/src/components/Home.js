@@ -1,13 +1,24 @@
 import React from "react";
-import { Header, Card, Grid, Image } from "semantic-ui-react";
+import { Header, Card, Grid, Image } from "semantic-ui-react"
+import {Link, } from "react-router-dom"
 import axios from "axios";
+import Beach from './images/beach.jpeg'
 
 class Home extends React.Component {
   state = { videos: [] };
 
   componentDidMount() {
-    axios.get("/api/videos").then(res => this.setState({ videos: res.data }));
-  }
+    axios.get("/api/videos")
+    .then(res => {
+      this.setState({ videos: res.data })
+      })
+      .catch(err => {
+        console.log(err.response)
+      })
+    }
+      
+  
+    
   allVideos = () => {
     const { videos } = this.state;
     if (videos.length <= 0) return <h2>No Video Yet...</h2>;
@@ -32,9 +43,15 @@ class Home extends React.Component {
       </>
     );
   };
+
   render() {
-    return <>{this.allVideos()}</>;
+    return (
+    <>
+    {this.allVideos()}
+    </>
+    )
   }
 }
+
 
 export default Home;

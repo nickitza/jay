@@ -12,7 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/node_modules
+.env
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
@@ -21,3 +22,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+node_modules
+node_modules
+node_modules
+node_modules
+node_modules
