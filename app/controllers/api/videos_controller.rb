@@ -27,20 +27,7 @@ def create
       render json: { errors: e }, status: 422
     end
   end
-
-  if video.save
-    render json: video
-  else
-    render json: video.errors, status: 422
-  end
 end
-
-## this is a custom route to display a current choice
-# def current
-#   video = Video.find(params[:id])
-#   video.update(current_video: !video.current_video)
-#   render json: video
-# end
 
 def update
   if @video.update(video_params)
