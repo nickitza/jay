@@ -27,6 +27,11 @@ def create
       render json: { errors: e }, status: 422
     end
   end
+
+  if video.save
+  else
+    render json: video.errors, status: 422
+  end
 end
 
 def update
