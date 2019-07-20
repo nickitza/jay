@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Card, Grid, Image } from "semantic-ui-react"
+import { Header, Card, Grid, Image, Button } from "semantic-ui-react"
 import {Link, } from "react-router-dom"
 import axios from "axios";
 
@@ -17,6 +17,12 @@ class Home extends React.Component {
       })
     }
       
+  deleteVideo = (id) => {
+    axios.delete(`/api/videos/${id}`).then(res => {
+      const { videos } = this.state;
+      this.setState({ videos: videos.filter(video => video.id !== id) });
+    });
+  };
   
     
   allVideos = () => {
@@ -34,6 +40,9 @@ class Home extends React.Component {
                 <Card.Content>
                   <Card.Header>{video.title}</Card.Header>
                   <Card.Meta>{video.description}</Card.Meta>
+                </Card.Content>
+                <Card.Content extra>
+                  <Button onClick={() => this.deleteVideo(video.id)}>Delete</Button>
                 </Card.Content>
               </Card>
             ))}

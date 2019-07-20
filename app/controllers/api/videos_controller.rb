@@ -29,7 +29,6 @@ def create
   end
 
   if video.save
-    render json: video
   else
     render json: video.errors, status: 422
   end
