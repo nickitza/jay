@@ -10,10 +10,16 @@ gem "puma", "~> 3.11"
 gem "bootsnap", ">= 1.1.0", require: false
 # Adds user authentication
 gem "devise_token_auth", "~> 1.0.0"
+gem 'cloudinary'
 
 group :development, :test do
   # Call 'pry' anywhere in the code to stop execution and get a debugger console
+<<<<<<< HEAD
   gem "pry-rails"
+=======
+  gem "pry"
+  gem 'dotenv-rails'
+>>>>>>> 2ae2ac57c9c11791f3a79b0fb9eca63b8f7aa41b
   # Generates test data
   gem "faker", :git => "https://github.com/stympy/faker.git", :branch => "master"
 end

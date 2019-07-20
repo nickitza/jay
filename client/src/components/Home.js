@@ -30,9 +30,7 @@ class Home extends React.Component {
           <Card.Group itemsPerRow={4}>
             {videos.map(video => (
               <Card key={video.id}>
-              <Link to={`/video/${video.id}`}>
-                <Image src={Beach} alt="Boo Hoo" />
-                </Link>
+                <Image src={video.trailer} alt="Boo Hoo" />
                 <Card.Content>
                   <Card.Header>{video.title}</Card.Header>
                   <Card.Meta>{video.description}</Card.Meta>
