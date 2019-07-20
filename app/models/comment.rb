@@ -1,3 +1,4 @@
 class Comment < ApplicationRecord
-  has_one :users, :through => :videos
+  belongs_to :videos
+  belongs_to :user 
 end
